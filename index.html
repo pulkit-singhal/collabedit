@@ -18,6 +18,7 @@
   
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.0/codemirror.min.js" type="text/javascript"></script>
+      <script src="./util.js" type="text/javascript"></script>
       <script type="text/javascript">
         $(document).ready(function(){
           var code = $(".codemirror-textarea")[0];
@@ -25,7 +26,9 @@
             lineNumbers : true
           });
           editor.on("change", function(cm, change) {
+            console.log(change);
             // Process change
+            console.log(uuidv4());
           });
         });
       </script>
