@@ -1,6 +1,6 @@
 /*
 messageID : Random UUID for each message messagePacket
-serverID : Random UUID generated when websocket is connected for the first time. Remains fixed there after
+siteID : Random UUID generated when websocket is connected for the first time. Remains fixed there after
 position : Position vector where the action has taken place
 action : "ADD" / "REMOVE"
 text : Text to be added or removed
