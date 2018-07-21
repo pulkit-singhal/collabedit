@@ -6,9 +6,9 @@ action : "ADD" / "REMOVE"
 text : Text to be added or removed
 */
 
-var messagePacket = function(messageID, serverID, position, action, text) {
+var messagePacket = function(messageID, siteID, position, action, text) {
   this.messageID = messageID;
-  this.serverID = serverID;
+  this.siteID = siteID;
   this.position = position;
   this.action = action;
   this.text = text;
@@ -18,8 +18,8 @@ messagePacket.prototype = {
   getMessageID: function() {
     return this.messageID;
   },
-  getServerID: function() {
-    return this.serverID;
+  getSiteID: function() {
+    return this.siteID;
   },
   getPosition: function() {
     return this.position;
@@ -33,8 +33,8 @@ messagePacket.prototype = {
   setMessageID: function(messageID) {
     this.messageID = messageID;
   },
-  setServerID: function(serverID) {
-    this.serverID = serverID;
+  setSiteID: function(siteID) {
+    this.siteID = siteID;
   },
   setPosition: function(position) {
     this.position = position;
