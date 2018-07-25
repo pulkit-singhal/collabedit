@@ -1,0 +1,26 @@
+{
+  "name": "collabedit",
+  "version": "1.0.0",
+  "description": "Collaborative editor for all!",
+  "main": "main.js",
+  "scripts": {
+    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
+    "start": "http-server -p 5258"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pulkit-singhal/collabedit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pulkit-singhal/collabedit/issues"
+  },
+  "homepage": "https://github.com/pulkit-singhal/collabedit#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "http-server": "^0.11.1"
+  }
+}
