@@ -1,10 +1,12 @@
-var allocator = function() {
-	this.boundary = 10;
-	this.S = {};
-}
+"use strict";
 
-allocator.prototype = {
-    allocate: function(p, q) {
+export default class Allocator {
+	constructor() {
+		this.boundary = 10;
+		this.S = {};
+	}
+
+	allocate(p, q) {
 		let depth = 0;
 		let interval = 0;
 		while (interval < 1) {
@@ -25,9 +27,9 @@ allocator.prototype = {
 			id = this.decreaseIdentifier(this.prefix(q, depth), subVal);
 		}
 		return id;
-	},
+	}
 
-	prefix: function(id, depth) {
+	prefix(id, depth) {
 		let idCopy = [];
 		for (let cpt = 0; cpt < depth; cpt++) {
 			if (cpt < id.length) {
@@ -37,22 +39,9 @@ allocator.prototype = {
 			}
 		}
 		return idCopy;
-	},
+	}
 
-	increaseIdentifier: function(id, n) {
-		let idCopy = id.slice(0);
-		let depth = idCopy.length;
-		let base = 32 * (2 ** (depth - 1))
-		for(let i = depth - 1; i >= 0; --i) {
-			idCopy[i] += n;
-			n = Math.floor(idCopy[i] / base);
-			idCopy[i] %= base;
-			base /= 2;
-		}
-		return idCopy;
-	},
-
-	decreaseIdentifier: function(id, n) {
+	decreaseIdentifier(id, n) {
 		let idCopy = id.slice(0);
 		let depth = idCopy.length;
 		let base = 32 * (2 ** (depth - 1))
@@ -67,9 +56,9 @@ allocator.prototype = {
 			n = toDecrease;
 		}
 		return idCopy;
-	},
+	}
 
-	availableIdentifiersBetween: function(p, q) {
+	availableIdentifiersBetween(p, q) {
 		let base = 32;
 		let len = p.length;
 		let intervalsToPut = 1;
