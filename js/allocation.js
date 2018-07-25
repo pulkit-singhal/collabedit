@@ -41,6 +41,19 @@ export default class Allocator {
 		return idCopy;
 	}
 
+	increaseIdentifier(id, n) {
+		let idCopy = id.slice(0);
+		let depth = idCopy.length;
+		let base = 32 * (2 ** (depth - 1))
+		for(let i = depth - 1; i >= 0; --i) {
+			idCopy[i] += n;
+			n = Math.floor(idCopy[i] / base);
+			idCopy[i] %= base;
+			base /= 2;
+		}
+		return idCopy;
+	}
+
 	decreaseIdentifier(id, n) {
 		let idCopy = id.slice(0);
 		let depth = idCopy.length;
