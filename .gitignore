@@ -1,5 +1,7 @@
+build/
 node_modules/
 .idea
+package-lock.json
 
 # OS generated files #
 ######################
