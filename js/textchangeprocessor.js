@@ -24,7 +24,41 @@ export default class TextChangeProcessor {
       let nextLine = this.CRDT[row + 1];
       this.CRDT[row].splice(column, 1, ...nextLine);
       this.CRDT.splice(row + 1, 1);
+      // Add check for last line
     }
+  }
+
+  addRemoteCharacterWith(id, character) {
+    this.validateCurrentState();
+    let row = 0, column = -1;
+    // Use binary search for this
+    for(let i = 0; i < this.CRDT.length; ++i) {
+      for(let j = 0; j < this.CRDT[i].length; ++j) {
+        if(this.allocator.compare(this.CRDT[i][j], id) === -1) {
+          row = i;
+          column = j;
+        } else {
+          break;
+        }
+      }
+    }
+    this.addCharacterAt(row, column + 1, character);
+    this.validateCurrentState();
+  }
+
+  addRemoteCharacterWith(id, character) {
+    this.validateCurrentState();
+    for(let i = 0; i < this.CRDT.length; ++i) {
+      for(let j = 0; j < this.CRDT[i].length; ++j) {
+        if(this.allocator.compare(this.CRDT[i][j], id) === 0) {
+          this.deleteCharacterAt(i, j);
+          console.log("Removed remote character");
+        } else {
+          break;
+        }
+      }
+    }
+    this.validateCurrentState();
   }
 
   handleNormalCharacter(row, column, id, character) {
@@ -57,5 +91,18 @@ export default class TextChangeProcessor {
     else
       rightAdjacentId = this.CRDT[row + 1][0].id;
     return rightAdjacentId;
+  }
+
+  validateCurrentState() {
+    id = [0];
+    for(let i = 0; i < this.CRDT.length; ++i) {
+      for(let j = 0; j < this.CRDT[i].length; ++j) {
+        if(this.allocator.compare(id, this.CRDT[i][j]) === -1) {
+          id = this.CRDT[i][j];
+        } else {
+          console.log("Invalid state");
+        }
+      }
+    }
   }
 }

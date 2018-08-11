@@ -88,4 +88,25 @@ export default class Allocator {
 		}
 		return intervals;
 	}
+
+	compare(p, q) {
+		let m = Math.min(p.length, q.length);
+		if(m === 0) {
+			console.log("One of the identifier is wrong");
+		}
+		for(let i = 0; i < m; ++i) {
+			if(p[i] < q[i]) {
+				return -1;
+			} else if(p[i] > q[i]) {
+				return 1;
+			}
+		}
+		if(p.length < q.length) {
+			return -1;
+		} else if(p.length > q.length) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
