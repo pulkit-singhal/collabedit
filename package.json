@@ -25,5 +25,9 @@
     "http-server": "^0.11.1",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "learn-reconnecting-websocket": "^1.0.1"
   }
 }

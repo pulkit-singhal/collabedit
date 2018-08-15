@@ -1,5 +1,7 @@
 "use strict";
 
+import Util from './util';
+
 export default class Allocator {
 	constructor() {
 		this.boundary = 10;
@@ -20,10 +22,10 @@ export default class Allocator {
 		}
 		let id;
 		if (this.S[depth]) {
-			let addVal = randInt(0, step) + 1;
+			let addVal = Util.getRandomInteger(0, step) + 1;
 			id = this.increaseIdentifier(this.prefix(p, depth), addVal);
 		} else {
-			let subVal = randInt(0, step) + 1;
+			let subVal = Util.getRandomInteger(0, step) + 1;
 			id = this.decreaseIdentifier(this.prefix(q, depth), subVal);
 		}
 		return id;

@@ -1,6 +1,6 @@
 "use strict";
 
-export default class Util {
+class Util {
   constructor() {
   }
 
@@ -15,3 +15,5 @@ export default class Util {
     return Math.floor(Math.random() * (hi - lo) + lo);
   }
 }
+
+export default new Util();
